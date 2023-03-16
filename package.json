@@ -8,8 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "chess.js": "^1.0.0-beta.3",
     "chessboard": "^2.0.0",
-    "cm-chessboard": "^6.0.4",
-    "pgn-to-fen": "^0.0.0",
+
     "react": "^18.2.0",
     "react-chess-analysis-board": "^0.0.19",
     "react-chessboard": "^2.1.2",
