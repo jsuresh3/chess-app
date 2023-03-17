@@ -10,7 +10,7 @@ import axios from 'axios';
 
 function App() {
 
-  const [turn, setTurn]  = useState("white")
+  const [turn, setTurn]  = useState("White")
    const [validation, setValidation] = useState(null)
   const chess = new Chess()
   const [chess2, setChess] = useState(new Chess());
@@ -30,11 +30,11 @@ function App() {
       const turnsarray = res.data.game.pgn.split(" ")
       if(turnsarray.length%2==0)
       {
-        setTurn("white")
+        setTurn("White")
       }
       else
       {
-        setTurn("black")
+        setTurn("Black")
       }
       const sol = (res.data.puzzle.solution)
       setMSolution([...sol])
@@ -113,24 +113,7 @@ function App() {
       {setChess(gameCopy)
       ;}
 
-      setTimeout(()=>{
-        
-      },1000)
-      result = gameCopy.move({
-        from: solution[0].substring(0,2),
-        to: solution[0].substring(2,4),
-        promotion: "q", // always promote to a queen for example simplicity
-      });
-         
-    const newSolution = solution
-    newSolution.shift()
-      console.log(newSolution)
-      setSolution(newSolution)
-
       }
-      if(result)
-      {setChess(gameCopy)
-      ;}
       return result; // null if the move was illegal, the move object if the move was legal
 
     }
@@ -140,10 +123,10 @@ function App() {
       setChess(mainChess2)
       setValidation(true)
     }
-  if(chess2&&solution)
+  if(!!solution)
   {
   return (
-    <div>
+    <div className='chess'>
       <div
       style={validation?{ border: "1rem solid green" }:{border: "1rem solid red"}
         }

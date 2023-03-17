@@ -1,9 +1,16 @@
 .App {
-  text-align: center;
+  
 
 
 }
 .chess-board{
-  width: 50vw;
+  
+  width: 35vw;
+}
+.chess{
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
 }
 
