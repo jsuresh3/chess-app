@@ -9,8 +9,7 @@ export default function Bot() {
   const [playerStart, setPlay] = useState(false);
 
   useEffect(()=>{
-    
-    if(!!playerStart)
+   
     makeRandomMove()
 
   },[game,playerStart])
@@ -44,7 +43,6 @@ export default function Bot() {
   }
 
   function onDrop(sourceSquare, targetSquare) {
-    setPlay(true)
     const move = makeAMove({
       from: sourceSquare,
       to: targetSquare,
