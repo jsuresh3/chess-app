@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.scss';
 
 import { Chessboard } from "react-chessboard";
-import { Chess } from 'chess.js';
+import  Chess  from 'chess.js';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
