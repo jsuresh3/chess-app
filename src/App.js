@@ -33,12 +33,12 @@ function App() {
       {
         setTurn("black")
       }
-
+      const sol = (res.data.puzzle.solution)
+      setMSolution([...sol])
       setChess(chess)
       setMChess(chess)
       console.log(res.data.puzzle.solution)
-      setSolution(res.data.puzzle.solution)
-      setMSolution(res.data.puzzle.solution)
+      setSolution([...sol])
 
       setValidation(true)
       //solutionParser()
@@ -65,7 +65,7 @@ function App() {
       const newSolution = solution
       if(validation){
       newSolution.shift()
-      console.log(newSolution)
+      console.log("ms "+mainSolution)
       setSolution(newSolution)
       }
       
@@ -121,7 +121,8 @@ function App() {
 
     }
     const refresh = () => {
-      setSolution(mainSolution)
+      setSolution([...mainSolution])
+      console.log("ms"+mainSolution)
       setChess(mainChess2)
       setValidation(true)
     }
@@ -134,7 +135,7 @@ function App() {
         }
       className='chess-board'><Chessboard
       
-        anim
+        
          position={chess2.fen()}
         
          animationDuration = {500}
