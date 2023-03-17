@@ -4,6 +4,7 @@ import Home from './pages/Home/Home';
 import Puzzles from './pages/Puzzles/Puzzles';
 import Friend from './pages/Friend/Friend';
 import Bot from './pages/Bot/Bot';
+import BotvsBot from './pages/BotvsBot/BotvsBot';
 import Header from './components/Header/Header';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/puzzles' element={<Puzzles />}></Route>
           <Route path='/friend' element={<Friend />}></Route>
           <Route path='/bot' element={<Bot />}></Route>
+          <Route path='/botvsbot' element={<BotvsBot />}></Route>
           {/* <Route path='*' element={<NotFound />}></Route> */}
         </Routes>
       </div>

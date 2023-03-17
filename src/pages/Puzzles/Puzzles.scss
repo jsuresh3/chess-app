@@ -1,10 +1,46 @@
 .chess-board{
+  width: 100vw;
+  margin-top: 3rem;
+  }
+  .chess{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .button {
+      margin: auto;
+      height: 40px;
+      width: 160px;
+      font-weight: 400;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 0.125rem;
+      background-color: rgb(100, 162, 67);
+      color: white;
+      cursor: pointer;
+      margin-bottom: 10rem;
+      &:hover {
+        background-color: rgb(89, 131, 67);
+      }
+  }
   
-  width: 35vw;
-}
-.chess{
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  align-items: center;
-}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  

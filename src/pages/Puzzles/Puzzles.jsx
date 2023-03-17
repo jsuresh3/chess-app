@@ -17,7 +17,7 @@ function Puzzles() {
   const [solution, setSolution] = useState(null);
   const [mainSolution, setMSolution] = useState(null);
   
-  const id = ["00sHx","00sJ9","00sJb","00sJb"]
+  const id = ["00sHx","00sJ9","00sJb",]
 
   
   useEffect(()=>{
@@ -39,7 +39,7 @@ function Puzzles() {
       setChess(chess)
       
       setMChess(chess)
-      console.log(res.data.puzzle.solution)
+      console.log("puzzles  " +res.data.puzzle.solution)
       setSolution([...sol])
       setChess3(chess)
       setValidation(true)
@@ -148,7 +148,7 @@ function Puzzles() {
        style={{display: !!solution.length ? 'none' : 'block' }}
       >Win</h1>
       
-      <button onClick={refresh}>Retry</button>
+      <button className="button" onClick={refresh}>Retry</button>
     </div>
     
   );

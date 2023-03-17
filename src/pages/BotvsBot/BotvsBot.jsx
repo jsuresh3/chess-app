@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
-import './Bot.scss';
-export default function Bot() {
+export default function BotvsBot() {
   const [game, setGame] = useState(new Chess());
   const [playerStart, setPlay] = useState(false);
   useEffect(()=>{
-    if(!!playerStart)
     makeRandomMove()
   },[game,playerStart])
   function makeAMove(move) {
@@ -33,7 +31,6 @@ export default function Bot() {
     makeAMove(possibleMoves[randomIndex]);
   }
   function onDrop(sourceSquare, targetSquare) {
-    setPlay(true)
     const move = makeAMove({
       from: sourceSquare,
       to: targetSquare,
@@ -45,21 +42,12 @@ export default function Bot() {
   }
   return (<div className="chess">
     <div className="chess-board">
-      <h1>Play a Bot</h1>
+        <h1>Bot vs Bot</h1>
     <Chessboard position={game.fen()} onPieceDrop={onDrop}
     />;
   </div>
   </div>)
 }
-
-
-
-
-
-
-
-
-
 
 
 
