@@ -14,11 +14,14 @@ function App() {
    const [validation, setValidation] = useState(null)
   const chess = new Chess()
   const [chess2, setChess] = useState(new Chess());
+  const [chess3, setChess3] = useState(new Chess());
   const [mainChess2, setMChess] = useState(new Chess());
   const [solution, setSolution] = useState(null);
   const [mainSolution, setMSolution] = useState(null);
   
   const id = ["00sHx","00sJ9","00sJb","00sJb"]
+
+  
   useEffect(()=>{
     axios.get("https://lichess.org/api/puzzle/"+id[Math.floor(Math.random() * id.length)])
     .then((res)=>{
@@ -36,16 +39,23 @@ function App() {
       const sol = (res.data.puzzle.solution)
       setMSolution([...sol])
       setChess(chess)
+      
       setMChess(chess)
       console.log(res.data.puzzle.solution)
       setSolution([...sol])
-
+      setChess3(chess)
       setValidation(true)
       //solutionParser()
     })
   
   },[])
-  
+  useEffect(()=>{
+    const newchess = new Chess()
+    newchess.load(chess2.fen())
+    setChess3(chess2)
+  },[chess2])
+
+
     function checkSolution(ssquare,tsquare){
       
     if(solution[0].includes(ssquare+tsquare))
@@ -102,6 +112,10 @@ function App() {
       if(result)
       {setChess(gameCopy)
       ;}
+
+      setTimeout(()=>{
+        
+      },1000)
       result = gameCopy.move({
         from: solution[0].substring(0,2),
         to: solution[0].substring(2,4),
@@ -126,7 +140,7 @@ function App() {
       setChess(mainChess2)
       setValidation(true)
     }
-  if(chess2)
+  if(chess2&&solution)
   {
   return (
     <div>
@@ -136,7 +150,7 @@ function App() {
       className='chess-board'><Chessboard
       
         
-         position={chess2.fen()}
+         position={chess3.fen()}
         
          animationDuration = {500}
           onPieceDrop={onDrop}
@@ -149,6 +163,10 @@ function App() {
          />
       </div>
       <h1>{turn}</h1>
+      <h1
+       style={{display: !!solution.length ? 'none' : 'block' }}
+      >Win</h1>
+      
       <button onClick={refresh}>Retry</button>
     </div>
     
