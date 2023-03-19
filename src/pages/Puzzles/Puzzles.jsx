@@ -17,7 +17,7 @@ function Puzzles() {
   const [solution, setSolution] = useState(null);
   const [mainSolution, setMSolution] = useState(null);
   
-  const id = ["00sHx","00sJ9","00sJb",]
+  const id = ["00sHx","bewdO",]
 
   
   useEffect(()=>{
@@ -88,8 +88,8 @@ function Puzzles() {
       } catch (error) {
         
       }
+      
 
-     
      
     }
 
@@ -112,6 +112,22 @@ function Puzzles() {
       ;}
 
       }
+
+      result = gameCopy.move({
+        from: solution[0].substring(0,2),
+        to: solution[0].substring(2,4),
+        promotion: "q", // always promote to a queen for example simplicity
+      });
+      
+      if(validation)
+
+      {
+    const newSolution = solution
+    newSolution.shift()
+      console.log(newSolution)
+      setSolution(newSolution)
+      }
+
       return result; // null if the move was illegal, the move object if the move was legal
 
     }
@@ -125,9 +141,11 @@ function Puzzles() {
   {
   return (
     <div className='chess'>
+      <h1>Puzzle</h1>
       <div
       style={validation?{ border: "1rem solid green" }:{border: "1rem solid red"}
         }
+        
       className='chess-board'><Chessboard
       
         
@@ -143,10 +161,15 @@ function Puzzles() {
         
          />
       </div>
-      <h1>{turn}</h1>
-      <h1
-       style={{display: !!solution.length ? 'none' : 'block' }}
-      >Win</h1>
+      <h1 className="title">{turn}</h1>
+      <div
+      style={{display: !!validation ? 'block' : 'none' }}
+      >
+        <h1
+        className="title"
+         style={{display: !!solution.length ? 'none' : 'block' }}
+        >Win</h1>
+      </div>
       
       <button className="button" onClick={refresh}>Retry</button>
     </div>

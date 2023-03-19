@@ -26,8 +26,8 @@ const Friend = () => {
   // Send the Axios request
   useEffect(() => {
     const params = {
-      prompt: "Make a joke about the chess move - "+(!!currentPiece?currentPiece:"")
-       + " " + (!!currentSq?currentSq:""), 
+      prompt: "Make a joke about the chess piece  - "+(!!currentPiece?currentPiece:"")
+       + " " + (!!currentSq?"":""), 
       model: "text-davinci-003",
       max_tokens: 50,
       temperature: 0,
