@@ -50,6 +50,7 @@ function Puzzles() {
   useEffect(()=>{
     const newchess = new Chess()
     newchess.load(chess2.fen())
+    console.log("hello helo")
     setChess3(chess2)
   },[chess2])
 
@@ -112,7 +113,7 @@ function Puzzles() {
       ;}
 
       }
-
+setTimeout(()=>{})
       result = gameCopy.move({
         from: solution[0].substring(0,2),
         to: solution[0].substring(2,4),
@@ -137,7 +138,7 @@ function Puzzles() {
       setChess(mainChess2)
       setValidation(true)
     }
-  if(!!solution)
+  if(!!chess3)
   {
   return (
     <div className='chess'>
@@ -167,7 +168,7 @@ function Puzzles() {
       >
         <h1
         className="title"
-         style={{display: !!solution.length ? 'none' : 'block' }}
+         style={{display: !!solution? 'none' : 'block' }}
         >Win</h1>
       </div>
       

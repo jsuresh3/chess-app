@@ -56,6 +56,7 @@ const Friend = () => {
         <h1>Play a Friend</h1>
         <Chessboard id="BasicBoard" 
         onPieceDragEnd={(piece,sourceSquare)=>{changeChess(piece,sourceSquare)}}
+        //onPieceDrop={(sourceSquare, targetSquare,piece)=>{changeChess(sourceSquare, targetSquare,piece)}}
         />
         <h1>{joke}</h1>
       </div>
