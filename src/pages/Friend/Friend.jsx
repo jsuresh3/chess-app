@@ -8,7 +8,7 @@ const Friend = () => {
 
   // Set up your OpenAI API key
   const [joke, setJoke] = useState("")
-  const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+  const apiKey = "process.env.REACT_APP_OPENAI_API_KEY";
   const apiUrl = 'https://api.openai.com/v1/';
   const [currentPiece, setPiece] = useState(null)
   const [currentSq, setSq] = useState(null)
