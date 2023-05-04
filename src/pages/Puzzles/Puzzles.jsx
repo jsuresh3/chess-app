@@ -16,6 +16,7 @@ function Puzzles() {
   const [mainChess2, setMChess] = useState(new Chess());
   const [solution, setSolution] = useState(null);
   const [mainSolution, setMSolution] = useState(null);
+  const [moveCount, setMoveCount] = useState(0);
   
   const id = ["00sHx","bewdO",]
 
@@ -50,7 +51,6 @@ function Puzzles() {
   useEffect(()=>{
     const newchess = new Chess()
     newchess.load(chess2.fen())
-    console.log("hello helo")
     setChess3(chess2)
   },[chess2])
 
@@ -69,8 +69,9 @@ function Puzzles() {
 
     function onDrop(sourceSquare, targetSquare) {
       
-
+      setMoveCount(moveCount+1);
       checkSolution(sourceSquare, targetSquare)
+      
       const newSolution = solution
       if(validation){
       newSolution.shift()
@@ -137,6 +138,7 @@ setTimeout(()=>{})
       console.log("ms"+mainSolution)
       setChess(mainChess2)
       setValidation(true)
+      setMoveCount(0)
     }
   if(!!chess3)
   {
@@ -168,7 +170,7 @@ setTimeout(()=>{})
       >
         <h1
         className="title"
-         style={{display: !!solution? 'none' : 'block' }}
+         style={{display: !!validation&&moveCount==2? 'block' : 'none' }}
         >Win</h1>
       </div>
       
