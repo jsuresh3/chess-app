@@ -1,14 +1,12 @@
-import './App.scss';
-<<<<<<< HEAD
-
 import { Chessboard } from "react-chessboard";
-import  Chess  from 'chess.js';
+import { Chess } from 'chess.js';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import './Puzzles.scss';
 
 
-function App() {
+function Puzzles() {
 
   const [turn, setTurn]  = useState("White")
    const [validation, setValidation] = useState(null)
@@ -18,8 +16,9 @@ function App() {
   const [mainChess2, setMChess] = useState(new Chess());
   const [solution, setSolution] = useState(null);
   const [mainSolution, setMSolution] = useState(null);
+  const [moveCount, setMoveCount] = useState(0);
   
-  const id = ["00sHx","00sJ9","00sJb","00sJb"]
+  const id = ["00sHx","bewdO",]
 
   
   useEffect(()=>{
@@ -41,7 +40,7 @@ function App() {
       setChess(chess)
       
       setMChess(chess)
-      console.log(res.data.puzzle.solution)
+      console.log("puzzles  " +res.data.puzzle.solution)
       setSolution([...sol])
       setChess3(chess)
       setValidation(true)
@@ -70,8 +69,9 @@ function App() {
 
     function onDrop(sourceSquare, targetSquare) {
       
-
+      setMoveCount(moveCount+1);
       checkSolution(sourceSquare, targetSquare)
+      
       const newSolution = solution
       if(validation){
       newSolution.shift()
@@ -90,8 +90,8 @@ function App() {
       } catch (error) {
         
       }
+      
 
-     
      
     }
 
@@ -114,6 +114,22 @@ function App() {
       ;}
 
       }
+setTimeout(()=>{})
+      result = gameCopy.move({
+        from: solution[0].substring(0,2),
+        to: solution[0].substring(2,4),
+        promotion: "q", // always promote to a queen for example simplicity
+      });
+      
+      if(validation)
+
+      {
+    const newSolution = solution
+    newSolution.shift()
+      console.log(newSolution)
+      setSolution(newSolution)
+      }
+
       return result; // null if the move was illegal, the move object if the move was legal
 
     }
@@ -122,14 +138,17 @@ function App() {
       console.log("ms"+mainSolution)
       setChess(mainChess2)
       setValidation(true)
+      setMoveCount(0)
     }
-  if(!!solution)
+  if(!!chess3)
   {
   return (
     <div className='chess'>
+      <h1>Puzzle</h1>
       <div
       style={validation?{ border: "1rem solid green" }:{border: "1rem solid red"}
         }
+        
       className='chess-board'><Chessboard
       
         
@@ -145,41 +164,21 @@ function App() {
         
          />
       </div>
-      <h1>{turn}</h1>
-      <h1
-       style={{display: !!solution.length ? 'none' : 'block' }}
-      >Win</h1>
-      
-      <button onClick={refresh}>Retry</button>
-=======
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Puzzles from './pages/Puzzles/Puzzles';
-import Friend from './pages/Friend/Friend';
-import Bot from './pages/Bot/Bot';
-import BotvsBot from './pages/BotvsBot/BotvsBot';
-import Header from './components/Header/Header';
-
-function App() {
-  return (
-  <BrowserRouter>
-    <div className="App">
-      <Header />
-      <div className="content">
-        <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/home' element={<Navigate to={'/'} />}></Route>
-          <Route path='/puzzles' element={<Puzzles />}></Route>
-          <Route path='/friend' element={<Friend />}></Route>
-          <Route path='/bot' element={<Bot />}></Route>
-          <Route path='/botvsbot' element={<BotvsBot />}></Route>
-          {/* <Route path='*' element={<NotFound />}></Route> */}
-        </Routes>
+      <h1 className="title">{turn}</h1>
+      <div
+      style={{display: !!validation ? 'block' : 'none' }}
+      >
+        <h1
+        className="title"
+         style={{display: !!validation&&moveCount==2? 'block' : 'none' }}
+        >Win</h1>
       </div>
->>>>>>> origin/feature-botvbot
+      
+      <button className="button" onClick={refresh}>Retry</button>
     </div>
-  </BrowserRouter>
+    
   );
+  }
 }
 
-export default App;
+export default Puzzles;

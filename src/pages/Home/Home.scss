@@ -1,0 +1,65 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  &__puzzles-button {
+    margin: auto;
+    margin-top: 10rem;
+    height: 40px;
+    width: 160px;
+    font-weight: 400;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.125rem;
+    background-color: rgb(100, 162, 67);
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(89, 131, 67);
+    }
+  }
+  &__friend-button {
+    margin: auto;
+    height: 40px;
+    width: 160px;
+    font-weight: 400;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.125rem;
+    background-color: rgb(100, 162, 67);
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(89, 131, 67);
+    }
+  }
+  &__bot-button {
+    margin: auto;
+    height: 40px;
+    width: 160px;
+    font-weight: 400;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.125rem;
+    background-color: rgb(100, 162, 67);
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(89, 131, 67);
+    }
+  }
+  &__bot-vs-bot-button {
+    margin: auto;
+    height: 40px;
+    width: 160px;
+    font-weight: 400;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.125rem;
+    background-color: rgb(100, 162, 67);
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(89, 131, 67);
+    }
+  }
+}
